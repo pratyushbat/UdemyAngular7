@@ -1,0 +1,9 @@
+<div class="zippy">
+  <div class="zippy-heading" [class.expanded]="isExpanded" (click)="toggle()">
+    
+    {{title}}
+    <i class="fa-star" [ngClass]="{   'fas ': isExpanded, far : !isExpanded          }" class ="fa-star" ></i>
+  </div>
+  <div  *ngIf="isExpanded" class="zippy-body">
+    <ng-content></ng-content></div>
+</div>

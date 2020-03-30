@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Angular 2 + Google Maps Places Autocomplete</h1>
+  <div class="form-group">
+    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+  </div>
+  <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+    <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m, i)" [latitude]="m.lat" [longitude]="m.lng" [label]="{color: 'blue',text:'asmsk'}">
+      <agm-info-window>{{m.name}}</agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>
+
+
+<div #gmap style=”width:100%;height:400px”></div>

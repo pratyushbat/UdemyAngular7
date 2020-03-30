@@ -1,0 +1,70 @@
+
+    <h1 class="display-1"> <i class="fas fa-heart" [class.highlighted]="isActive" (click)=onClickNew()></i></h1>
+
+{{likesCount  }}
+
+<!-- stuctural directive vs Attributr directive -->
+<!-- here we use structural directive -->
+
+
+<!-- <div *ngIf="courses.length>0">
+  List of courses
+</div>
+<div *ngIf="courses.length==0">
+  No courses Yet
+</div> -->
+
+<!-- now using if else -->
+<div *ngIf="courses.length>0; then coursesYes else noCourses"></div>
+<ng-template #coursesYes >
+    List courses Yet
+  </ng-template>
+<ng-template #noCourses >
+  No courses Yet
+</ng-template>
+<!-- ng-if vs hidden//ng if is costly -->
+
+<div [hidden]="courses.length>0">
+    No courses Yet  
+  </div>
+  <div [hidden]="courses.length==0">
+    List of courses
+  </div> 
+
+<!-- TRACK BY MEMORY-where new memory loc created evry time -->
+  <button class="btn btn-success" (click)="onAdd()">Add</button>
+<ul>
+  <li *ngFor="let course of courses; index as i;even as isEven">
+{{i+1}}) {{course.name}}
+<span *ngIf="isEven">(EVEN)</span>
+<button class="btn btn-primary" (click)="onUpdate(course)">Update</button><button class="btn btn-danger" (click)="onRemove(course)">Remove</button>
+  </li>
+</ul>
+
+<button (click)="loadCourses()">Load Courses</button>
+
+<!-- TRACK BY id -->
+<ul>
+    <li *ngFor="let course of courses; trackBy: trackCourse">
+ {{course.name}}
+
+  <button class="btn btn-primary" (click)="onUpdate(course)">Update</button><button class="btn btn-danger" (click)="onRemove(course)">Remove</button>
+    </li>
+  </ul>
+  
+
+
+  <div *ngIf="courses.length>0;  else noCourse">
+List COurse below
+  </div>
+<ng-template #noCourse >
+  No courses Yet
+</ng-template>
+
+
+<ng-template *ngIf="courses.length>0" >
+  <div>  No courses Yet----</div>
+  </ng-template>
+<ng-template *ngIf="!(courses.length>0)" >
+    No courses asbsccjasd
+  </ng-template>

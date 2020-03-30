@@ -1,0 +1,26 @@
+<div  *ngFor="let follow of  follower" class="media">
+  
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="{{follow.avatar_url}}" alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading" > <a [routerLink]="['/follower',follow.id,follow.login]">{{follow.login}}</a></h4>
+      <a [routerLink]="['/follower',follow.id, follow.login]" >{{follow.html_url}}</a>
+    </div>
+  </div>
+
+  <button class="button btn-success btn-sm"(click)="ok()">
+      Data Retrieve
+    </button>
+
+    <input [(ngModel)]="searchText" placeholder="search text goes here">
+<ul>
+  <li *ngFor="let c of characters | farray : searchText">
+    {{c}}
+  </li>
+</ul>
+<select class='select-option' required [(ngModel)]='optionSelected' (ngModelChange)='onOptionsSelected($event)'>
+  <option class='option' *ngFor='let option of options' [value]="option">{{option}}</option>
+</select>

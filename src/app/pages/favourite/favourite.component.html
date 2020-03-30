@@ -1,0 +1,61 @@
+<style>
+</style>
+
+
+<p>
+  favourite works!
+</p>
+
+
+
+<h1 class="display-4"> <i [class.far]="isFavourite "  [class.fas]="!isFavourite " class ="fa-star" (click)="onClick()"></i></h1>
+
+<input [(ngModel)]="title">
+
+{{title | titleCase}}
+
+<!-- easy way  -->
+<h1 class="display-3"> <i [class.fas]="isFavouritetwo "[class.far]="!isFavouritetwo " class ="fa-star" (click)="onClick2()"></i></h1>
+<h1 class="display-3"> <i class="fa-star" [ngClass]="{   'fas ': isFavourite, far : !isFavourite          }" class ="fa-star" (click)="onClick()"></i></h1>
+<!-- <button
+[style.fontWeight]="canSave ? 'bold'  :'normal'"
+[style.backgroundColour]="canSave ? 'blue':'gray' "
+[style.colour]="canSave ? 'blue': 'black' "
+
+(click)="rev()"
+>
+Weigfhin
+</button> -->
+<!-- 
+<button
+[ngStyle]="{
+'backgroundColour': canSave? 'blue': 'red'
+}"
+(click)="rev()"
+>
+Weigfhin
+</button> -->
+---------
+<!-- 1st way usng ng if or 2nd way using traversal operator -->
+<p>{{task.assignee?.name}}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+.....
+
+
+
+
+<p>Interpolation {{titl}}</p>
+<p [textContent]="title"> Doing same interpolation with prop binding wait</p>
+<p (click)="ok()">Interpolation {{titl}}</p>
+<input type="text" [(ngModel)]="result" [ngModelOptions]="{standalone: true}">

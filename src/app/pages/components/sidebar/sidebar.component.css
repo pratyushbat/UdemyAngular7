@@ -1,0 +1,11 @@
+@media only screen and (max-width: 991px) {
+        .sidebar-wrapper {
+                width: 260px;
+        }
+        .sidebar-wrapper:hover {
+                width: 260px;
+        }
+        .sidebar-wrapper:focus {
+                width: 260px;
+        }
+}

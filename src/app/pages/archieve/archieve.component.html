@@ -1,0 +1,9 @@
+<h1>
+  Archieve for  {{year }} / {{month}}
+</h1>
+<button (click)="view()">View</button>
+
+<h1>Search color</h1>
+            <ng2-completer [(ngModel)]="searchStr" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+            <h1>Search captain</h1>
+            <ng2-completer [(ngModel)]="captain" [datasource]="captains" [minSearchLength]="0"></ng2-completer>`

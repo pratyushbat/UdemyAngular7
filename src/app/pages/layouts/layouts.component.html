@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="#">Brand/Logo</a>
+  <button class="navbar-toggler" (click)="collapse=!collapse" type="button" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar" >
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <li [class.active] = "viewMode =='map'" ><a (click)="viewMode='map'"> View Map</a></li>
+        <li [class.active] =" viewMode =='list'" > <a (click)="viewMode ='list' " >List View</a></li>
+        <li  > <a  >Post View</a></li>
+     <!-- <li>  <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li> -->
+    </ul>
+  </div>
+</nav>
+<div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'map'">Map View Content</div>
+    <div *ngSwitchCase="'list'"> List View Content</div>
+   <div *ngSwitchDefault>Otherwise</div>   
+</div>
+<!-- ul.nav.nav-pill then press tab -->
+<!-- (li>a)*2 tab -->
+
+
+<!-- <button class="btn btn-success" (click)="onAdd()">Add</button>
+<ul>
+  <li *ngFor="let course of courses; index as i;even as isEven">
+{{i}}{{course.name}}
+<span *ngIf="isEven">(EVEN)</span>
+<button class="btn btn-danger" (click)="onRemove(course)">Remove</button>
+  </li>
+</ul> -->
+
+<div class="container">
+  
+<form #f="ngForm" (ngSubmit)="submit(f.value)">
+  <div class="form-group">
+    <label for="name">Course Name</label>
+    <input required minlength="3" ngModel name="name" #name="ngModel" type="text" id="name" class="form-control">
+  <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+    <div *ngIf="name.errors.required">Name Field is required</div>
+    <div *ngIf="name.errors.minlength">Name length is required{{name.errors.minlength.requiredLength}} charracters</div>
+  </div>
+  </div>
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select  required ngModel name="category"  id="category" #category="ngModel" class="form-control">
+      <option value=""></option>
+   <option *ngFor = "let c of categories" [value]="c.id">{{c.name}}</option>
+</select>
+<div  *ngIf="category.touched && category.invalid" class="alert alert-danger">
+    Category is required
+  </div>
+  </div>
+  <div class="checkbox">
+      <label for="moneyBackGuarantee">
+      <input required ngModel name="hasMoneyBackGuarantee" type="checkbox" id="moneyBackGuarantee" >
+      30 day money back guarantee
+    </label>
+    </div>
+<p>{{f.value|json}}</p>
+    <button class="btn btn-primary" [disabled]="f.invalid">Create</button>
+</form>
+
+</div>
+<router-outlet></router-outlet>  
